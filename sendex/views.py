@@ -10,7 +10,7 @@ def sender(request):
         message = msg
 
         open_whatsapp_chat(phone_number, message)
-        return redirect('/')
+        
     
     pre_msg = "AOA! \nWe noticed [QubeSuit] doesn't have a website. Let's fix that! A professional website can attract more customers and boost credibility. \nCan we chat about how we can help this week? \nCheers, \nQubeknit 🚀"
     
