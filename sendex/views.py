@@ -3,17 +3,19 @@ from django.shortcuts import render, redirect, HttpResponse, HttpResponseRedirec
 def sender(request):
     if request.method == "POST":
         data = request.POST
-
+        btn = data.get('platform')
         ph = data.get('ph')
-        msg = data.get('msg')
-        phone_number = ph
-        message = msg
+        client = data.get('client')
 
-        return open_whatsapp_chat(phone_number, message)
 
-    pre_msg = "AOA! \nWe noticed [QubeSuit] doesn't have a website. Let's fix that! A professional website can attract more customers and boost credibility. \nCan we chat about how we can help this week? \nCheers, \nQubeknit 🚀"
+        if btn == 'shopify':
+            message = f"AOA! We noticed *{client}* doesn't have a Online Store. Let's fix that! A professional E-Commerce Store can attract more customers and boost credibility. Can we chat about how we can help this week?\nCheers,\n*Qubeknit* 🚀"
+        else:
+            message = f"AOA! We noticed *{client}* doesn't have a website. Let's fix that! A professional website can attract more customers and boost credibility. Can we chat about how we can help this week?\nCheers,\n*Qubeknit* 🚀"
 
-    return render(request, 'index.html', {'prefilled_message': pre_msg})
+        return open_whatsapp_chat(ph, message)
+
+    return render(request, 'index.html',)
 
 
 def open_whatsapp_chat(phone_number, message):

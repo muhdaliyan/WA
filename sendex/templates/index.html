@@ -12,37 +12,47 @@
     <a href="https://www.linkedin.com/company/qubeknit" target="_blank">
       <img src="{% static 'text.png' %}" alt="Qubeknit" width="30" height="20">
     </a>
-    </div>
+  </div>
   <div class="container mx-auto mt-10 px-4">
     <h1 class="text-2xl font-semibold text-center mb-4 mt-10">WhatsApp Chat Initiator</h1>
     <p class="text-small text-center mb-4">(BETA version for desktop only)</p><hr><br>
     
-    <div class="card bg-white shadow-lg hover:shadow-2xl rounded mx-auto w-full lg:w-1/2">  <div class="px-6 py-4">
-      <form action="#" method="post">
+    <div class="card bg-white shadow-lg hover:shadow-2xl rounded mx-auto w-full lg:w-1/2">
+      <div class="px-6 py-4">
+        <form action="#" method="post">
           {% csrf_token %}
+          <div class="mb-4">
+            <label for="platform" class="block text-gray-700 text-sm font-bold mb-2">Platform:</label>
+            <div class="flex items-center mb-2">
+              <input type="radio" id="website" name="platform" value="website" checked>
+              <label for="website" class="text-gray-700 text-sm font-bold ml-2">Website</label>
+            </div>
+            <div class="flex items-center">
+              <input type="radio" id="shopify" name="platform" value="shopify">
+              <label for="shopify" class="text-gray-700 text-sm font-bold ml-2">Shopify</label>
+            </div>
+          </div>
           <div class="mb-4">
             <label for="phone_number" class="block text-gray-700 text-sm font-bold mb-2">Phone Number (including country code):</label>
             <input type="tel" name="ph" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
           </div>
           <div class="mb-6">
-            <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Message:</label>
-            <textarea rows="10" cols="70" name="msg" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" rows="5" required>{{ prefilled_message }}</textarea>
+            <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Client:</label>
+            <input rows="10" cols="70" name="client" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" rows="5" required>{{ prefilled_message }}</input>
           </div>
           <div class="flex items-center justify-end">
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Send to WhatsApp</button>
+            <button type="submit" target="_blank" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Send</button>
           </div>
         </form>
       </div>
     </div>
   </div>
-
+</body>
   <footer class="bg-gray-200 text-gray-900 body-font fixed bottom-4 w-full py-4 px-4 flex flex-wrap justify-center">
     <ul class="flex flex-wrap list-none md:justify-start gap-4">
       <li><a href="https://qubeknit.com/" target="_blank" class="text-base font-medium text-gray-700 hover:text-gray-900">Qubeknit</a></li>
       <li><a href="https://www.linkedin.com/company/qubeknit/" target="_blank" class="text-base font-medium text-gray-700 hover:text-gray-900">Linkdlin</a></li>
       <li><a href="https://qubeknit.com/about" target="_blank" class="text-base font-medium text-gray-700 hover:text-gray-900">About Us</a></li>
-      <li><a href="https://api.whatsapp.com/send?phone=923160973521&text=Hello%20Qubeknit%20I%20want%20your%20service%20FromWAM." target="_blank" class="text-base font-medium text-gray-700 hover:text-gray-900">Contact Us</a></li>
     </ul>
   </footer>
-</body>
 </html>
