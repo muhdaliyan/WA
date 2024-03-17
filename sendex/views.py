@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, HttpResponseRedirect
+from django.shortcuts import render, redirect, HttpResponse, HttpResponseRedirect
 
 def sender(request):
     if request.method == "POST":
@@ -11,7 +11,7 @@ def sender(request):
 
         return open_whatsapp_chat(phone_number, message)
 
-    pre_msg = "AOA! \nWe noticed [QubeSuit] doesn't have a website. Let's fix that! A professional website can attract more customers and boost credibility. \nCan we chat about how we can help this week? \nCheers, \nQubeknit "
+    pre_msg = "AOA! \nWe noticed [QubeSuit] doesn't have a website. Let's fix that! A professional website can attract more customers and boost credibility. \nCan we chat about how we can help this week? \nCheers, \nQubeknit 🚀"
 
     return render(request, 'index.html', {'prefilled_message': pre_msg})
 
@@ -23,7 +23,7 @@ def open_whatsapp_chat(phone_number, message):
 
     if not phone_number.isdigit():
         print("Invalid phone number. Please enter a valid number with digits only.")
-        return
+        return  HttpResponseRedirect('/')
 
     url = f"https://web.whatsapp.com/send?phone={phone_number}&text={encoded_message}"
     return HttpResponseRedirect(url)
