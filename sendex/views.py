@@ -17,11 +17,11 @@ def sender(request):
         if not phone_number.isdigit():
           print("Invalid phone number. Please enter a valid number with digits only.")
           return
+        else:
+           
         
-        url = f"https://web.whatsapp.com/send?phone={phone_number}&text={encoded_message}"
-
-
-        webbrowser.open(url)
+          url = f"https://web.whatsapp.com/send?phone={phone_number}&text={encoded_message}"
+          webbrowser.open(url)
         return redirect('/')
     
     pre_msg = "AOA! \nWe noticed [QubeSuit] doesn't have a website. Let's fix that! A professional website can attract more customers and boost credibility. \nCan we chat about how we can help this week? \nCheers, \nQubeknit 🚀"
